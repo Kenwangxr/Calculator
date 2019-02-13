@@ -66,28 +66,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.bt2:
                 clear();
                 break;
-            case R.id.bt6:
+            case R.id.bt6://算数运算符
                 case R.id.bt10:
                     case R.id.bt17:
                         case R.id.bt18:
                             if(input.length() ==0) break;
                             Button bt6 = (Button)findViewById(v.getId());
+                            bt6.setBackgroundColor(Color.RED);
                             opt = bt6.getText().toString();
                             num1 = Float.parseFloat(input.toString());
                             input = new StringBuilder();
                 break;
-            case R.id.bt14:
+            case R.id.bt14://=号
                 if(opt == null || input.length() == 0) break;
                 num2 = Float.parseFloat(input.toString());
                 if(opt.equals("/")) {
-                                div(num1, num2);
-                        }else if(opt.equals("*")){
-                                multi(num1, num2);
-                        }else if(opt.equals("-")){
-                                sub(num1, num2);
-                        }else {
-                                sum(num1, num2);
-                        }
+                    div(num1, num2);
+                }else if(opt.equals("*")){
+                    multi(num1, num2);
+                }else if(opt.equals("-")){
+                    sub(num1, num2);
+                }else {
+                    sum(num1, num2);
+                }
 
 
 
@@ -178,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     private void show(String text){
         TextView contentView = (TextView)findViewById(R.id.contentText);
-        contentView.setText(input.toString());
+        contentView.setText(text);
 
     }
 }
