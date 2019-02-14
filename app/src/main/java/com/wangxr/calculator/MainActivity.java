@@ -1,5 +1,6 @@
 package com.wangxr.calculator;
 
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.support.annotation.ColorInt;
 import android.support.v7.app.AlertDialog;
@@ -48,32 +49,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private String opt;//运算符
 
+    private Button lastOptButton;
 
 
     @Override
     public void onClick(View v) {
-//        System.out.println("dkkdkdk"+ v.getId());
-
         switch (v.getId()){
-            case R.id.bt1:
-//                System.out.println(v.getId());
-//                AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-//                alertDialog.setTitle(v.getId()+"");
-//                alertDialog.show();
-                findViewById(R.id.contentText).setBackgroundColor(Color.RED);
+            case R.id.bt1://回退
                 back();
                 break;
-            case R.id.bt2:
+            case R.id.bt2://清空
                 clear();
+                findViewById(R.id.contentText).setBackgroundColor(Color.WHITE);
+                if(lastOptButton !=null){
+                    lastOptButton.setBackgroundColor(getResources().getColor(R.color.backgroundColor));
+                }
                 break;
             case R.id.bt6://算数运算符
                 case R.id.bt10:
                     case R.id.bt17:
                         case R.id.bt18:
                             if(input.length() ==0) break;
-                            Button bt6 = (Button)findViewById(v.getId());
-                            bt6.setBackgroundColor(Color.RED);
-                            opt = bt6.getText().toString();
+                            lastOptButton = findViewById(v.getId());
+
+                            lastOptButton.setBackgroundColor(Color.RED);
+                            opt = lastOptButton.getText().toString();
                             num1 = Float.parseFloat(input.toString());
                             input = new StringBuilder();
                 break;
@@ -89,13 +89,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }else {
                     sum(num1, num2);
                 }
+                findViewById(R.id.contentText).setBackgroundColor(Color.RED);
+                if(lastOptButton !=null){
+                    lastOptButton.setBackgroundColor(getResources().getColor(R.color.backgroundColor));
+                }
 
 
 
                         break;
             default:
-                Button button = (Button)findViewById(v.getId());
-                input.append(button.getText());
+                Button numberBtn = (Button)findViewById(v.getId());
+                input.append(numberBtn.getText());
                 show(input.toString());
                 break;
 
@@ -110,7 +114,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private float sum(float num1, float num2){
         float result = num1 + num2;
-        this.num1 = result;
+//        this.num1 = result;
+        input = new StringBuilder(result+"");
         show(result+"");
         return result;
     }
@@ -123,7 +128,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private float sub(float num1, float num2){
         float result = num1 - num2;
-        this.num1 = result;
+//        this.num1 = result;
+        input = new StringBuilder(result+"");
         show(result+"");
         return result;
     }
@@ -136,7 +142,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private float multi(float num1, float num2){
         float result = num1 * num2;
-        this.num1 = result;
+//        this.num1 = result;
+        input = new StringBuilder(result+"");
         show(result+"");
         return result;
     }
@@ -155,7 +162,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return 0;
         }
         float result = num1/num2;
-        this.num1 = result;
+        input = new StringBuilder(result+"");
+//        this.num1 = result;
         show(result+"");
         return result;
     }
@@ -164,8 +172,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 回退
      */
     private void back(){
-       input.deleteCharAt(input.length()-1);
-       show(input.toString());
+        if(input.length()>=1){
+            input.deleteCharAt(input.length()-1);
+            show(input.toString());
+        }
     }
 
     /**

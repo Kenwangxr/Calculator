@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:columnCount="4"
@@ -14,7 +15,7 @@
         android:id="@+id/contentText"
         android:layout_height="wrap_content"
         android:layout_columnSpan="4"
-
+        android:backgroundTint="@android:color/white"
         android:layout_gravity="fill"
         android:gravity="right"
         android:maxLines="1"
@@ -27,16 +28,18 @@
         android:layout_marginTop="25sp"
         android:layout_marginRight="5sp"
         android:layout_marginBottom="5sp"
+        android:background="@color/backgroundColor"
         android:layout_columnSpan="2"/>
+
     <Button
         android:id="@+id/bt1"
-        android:text="@string/bt1"
-        android:textSize="30sp"
         android:layout_gravity="fill"
         android:layout_marginTop="25sp"
         android:layout_marginRight="5sp"
         android:layout_marginBottom="5sp"
-        />
+        android:text="@string/bt1"
+        android:background="@color/backgroundColor"
+        android:textSize="30sp" />
     <Button
         android:id="@+id/bt2"
         android:text="@string/bt2"
@@ -44,6 +47,7 @@
         android:layout_gravity="fill"
         android:layout_marginTop="25sp"
         android:layout_marginBottom="5sp"
+        android:background="@color/backgroundColor"
         />
     <Button
         android:id="@+id/bt3"
@@ -52,6 +56,7 @@
         android:textSize="30sp"
         android:layout_marginRight="5sp"
         android:layout_marginBottom="5sp"
+        android:background="@color/backgroundColor"
         />
     <Button
         android:id="@+id/bt4"
@@ -60,6 +65,7 @@
         android:layout_gravity="fill"
         android:layout_marginRight="5sp"
         android:layout_marginBottom="5sp"
+        android:background="@color/backgroundColor"
         />
     <Button
         android:id="@+id/bt5"
@@ -68,6 +74,7 @@
         android:layout_gravity="fill"
         android:layout_marginRight="5sp"
         android:layout_marginBottom="5sp"
+        android:background="@color/backgroundColor"
         />
     <Button
         android:id="@+id/bt6"
@@ -75,6 +82,7 @@
         android:textSize="30sp"
         android:layout_gravity="fill"
         android:layout_marginBottom="5sp"
+        android:background="@color/backgroundColor"
         />
     <Button
         android:id="@+id/bt7"
@@ -83,6 +91,7 @@
         android:layout_gravity="fill"
         android:layout_marginRight="5sp"
         android:layout_marginBottom="5sp"
+        android:background="@color/backgroundColor"
         />
     <Button
         android:id="@+id/bt8"
@@ -91,6 +100,7 @@
         android:layout_gravity="fill"
         android:layout_marginRight="5sp"
         android:layout_marginBottom="5sp"
+        android:background="@color/backgroundColor"
         />
     <Button
         android:id="@+id/bt9"
@@ -99,6 +109,7 @@
         android:layout_gravity="fill"
         android:layout_marginRight="5sp"
         android:layout_marginBottom="5sp"
+        android:background="@color/backgroundColor"
         />
     <Button
         android:id="@+id/bt10"
@@ -106,6 +117,7 @@
         android:textSize="30sp"
         android:layout_gravity="fill"
         android:layout_marginBottom="5sp"
+        android:background="@color/backgroundColor"
         />
     <Button
         android:id="@+id/bt11"
@@ -114,6 +126,7 @@
         android:layout_gravity="fill"
         android:layout_marginRight="5sp"
         android:layout_marginBottom="5sp"
+        android:background="@color/backgroundColor"
         />
     <Button
         android:id="@+id/bt12"
@@ -122,6 +135,7 @@
         android:layout_gravity="fill"
         android:layout_marginRight="5sp"
         android:layout_marginBottom="5sp"
+        android:background="@color/backgroundColor"
         />
     <Button
         android:id="@+id/bt13"
@@ -130,6 +144,7 @@
         android:layout_gravity="fill"
         android:layout_marginRight="5sp"
         android:layout_marginBottom="5sp"
+        android:background="@color/backgroundColor"
         />
     <Button
         android:id="@+id/bt14"
@@ -137,6 +152,7 @@
         android:textSize="30sp"
         android:layout_gravity="fill"
         android:layout_marginBottom="5sp"
+        android:background="@color/backgroundColor"
         />
     <Button
         android:id="@+id/bt15"
@@ -145,6 +161,7 @@
         android:layout_gravity="fill"
         android:layout_marginBottom="5sp"
         android:layout_marginRight="5sp"
+        android:background="@color/backgroundColor"
         />
     <Button
         android:id="@+id/bt16"
@@ -153,6 +170,7 @@
         android:layout_gravity="fill"
         android:layout_marginRight="5sp"
         android:layout_marginBottom="5sp"
+        android:background="@color/backgroundColor"
         />
     <Button
         android:id="@+id/bt17"
@@ -160,6 +178,7 @@
         android:textSize="30sp"
         android:layout_gravity="fill"
         android:layout_marginBottom="5sp"
+        android:background="@color/backgroundColor"
         android:layout_marginRight="5sp"/>
     <Button
         android:id="@+id/bt18"
@@ -167,5 +186,6 @@
         android:textSize="30sp"
         android:layout_gravity="fill"
         android:layout_marginBottom="5sp"
+        android:background="@color/backgroundColor"
         />
 </GridLayout>
