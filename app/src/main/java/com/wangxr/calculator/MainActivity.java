@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView contentText = findViewById(R.id.contentText);
         findViewById(R.id.bt1).setOnClickListener(this);
         findViewById(R.id.bt2).setOnClickListener(this);
         findViewById(R.id.bt3).setOnClickListener(this);
@@ -96,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-                        break;
+                break;
             default:
                 Button numberBtn = (Button)findViewById(v.getId());
                 input.append(numberBtn.getText());
@@ -174,6 +173,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void back(){
         if(input.length()>=1){
             input.deleteCharAt(input.length()-1);
+            if(input.length() == 0){
+                show(getResources().getString(R.string.defaultText));
+            }
             show(input.toString());
         }
     }
