@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case R.id.bt10:
                     case R.id.bt17:
                         case R.id.bt18:
-                            if(input.length() ==0) break;
+                            if(input.length() ==0 || opt!=null) break;
                             lastOptButton = findViewById(v.getId());
 
                             lastOptButton.setBackgroundColor(Color.RED);
@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }else {
                     sum(num1, num2);
                 }
+                opt = null;
                 findViewById(R.id.contentText).setBackgroundColor(Color.RED);
                 if(lastOptButton !=null){
                     lastOptButton.setBackgroundColor(getResources().getColor(R.color.backgroundColor));
@@ -175,8 +176,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             input.deleteCharAt(input.length()-1);
             if(input.length() == 0){
                 show(getResources().getString(R.string.defaultText));
+            }else{
+                show(input.toString());
             }
-            show(input.toString());
         }
     }
 
