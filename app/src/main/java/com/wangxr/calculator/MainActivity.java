@@ -40,9 +40,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private float num1;
+    private double num1;
 
-    private float num2;
+    private double num2;
 
     private StringBuilder input = new StringBuilder();
 
@@ -69,16 +69,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     case R.id.bt17:
                         case R.id.bt18:
                             if(input.length() ==0 || opt!=null) break;
+                            try{
+                                num1 = Float.parseFloat(input.toString());
+
+                            }catch (NumberFormatException e){
+                                AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+                                alertDialog.setTitle("输入有误！");
+                                alertDialog.show();
+                                return;
+                            }
                             lastOptButton = findViewById(v.getId());
 
                             lastOptButton.setBackgroundColor(Color.RED);
                             opt = lastOptButton.getText().toString();
-                            num1 = Float.parseFloat(input.toString());
                             input = new StringBuilder();
                 break;
             case R.id.bt14://=号
                 if(opt == null || input.length() == 0) break;
-                num2 = Float.parseFloat(input.toString());
+                try{
+                    num2 = Float.parseFloat(input.toString());
+                }catch (NumberFormatException e){
+                    AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+                    alertDialog.setTitle("输入有误！");
+                    alertDialog.show();
+                    return;
+                }
                 if(opt.equals("/")) {
                     div(num1, num2);
                 }else if(opt.equals("*")){
@@ -112,8 +127,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * @param num2
      * @return
      */
-    private float sum(float num1, float num2){
-        float result = num1 + num2;
+    private double sum(double num1, double num2){
+        double result = num1 + num2;
 //        this.num1 = result;
         input = new StringBuilder(result+"");
         show(result+"");
@@ -126,8 +141,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * @param num2
      * @return
      */
-    private float sub(float num1, float num2){
-        float result = num1 - num2;
+    private double sub(double num1, double num2){
+        double result = num1 - num2;
 //        this.num1 = result;
         input = new StringBuilder(result+"");
         show(result+"");
@@ -140,8 +155,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * @param num2
      * @return
      */
-    private float multi(float num1, float num2){
-        float result = num1 * num2;
+    private double multi(double num1, double num2){
+        double result = num1 * num2;
 //        this.num1 = result;
         input = new StringBuilder(result+"");
         show(result+"");
@@ -154,14 +169,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * @param num2
      * @return
      */
-    private float div(float num1, float num2){
+    private double div(double num1, double num2){
         if(num2 == 0){
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle("除数不能为0！");
             alertDialog.show();
             return 0;
         }
-        float result = num1/num2;
+        double result = num1/num2;
         input = new StringBuilder(result+"");
 //        this.num1 = result;
         show(result+"");
@@ -176,6 +191,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             input.deleteCharAt(input.length()-1);
             if(input.length() == 0){
                 show(getResources().getString(R.string.defaultText));
+                findViewById(R.id.contentText).setBackgroundColor(Color.WHITE);
             }else{
                 show(input.toString());
             }
