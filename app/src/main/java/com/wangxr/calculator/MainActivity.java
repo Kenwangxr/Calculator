@@ -59,23 +59,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.bt2://清空
                 clear();
-                findViewById(R.id.contentText).setBackgroundColor(Color.WHITE);
-                if(lastOptButton !=null){
-                    lastOptButton.setBackgroundColor(getResources().getColor(R.color.backgroundColor));
-                }
+
                 break;
             case R.id.bt6://算数运算符
                 case R.id.bt10:
-                    case R.id.bt17:
+                    case R.id.bt14:
                         case R.id.bt18:
                             if(input.length() ==0 || opt!=null) break;
                             try{
                                 num1 = Float.parseFloat(input.toString());
 
                             }catch (NumberFormatException e){
-                                AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-                                alertDialog.setTitle("输入有误！");
-                                alertDialog.show();
+                                alert("输入有误！");
                                 return;
                             }
                             lastOptButton = findViewById(v.getId());
@@ -84,14 +79,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             opt = lastOptButton.getText().toString();
                             input = new StringBuilder();
                 break;
-            case R.id.bt14://=号
+            case R.id.bt17://=号
                 if(opt == null || input.length() == 0) break;
                 try{
                     num2 = Float.parseFloat(input.toString());
                 }catch (NumberFormatException e){
-                    AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-                    alertDialog.setTitle("输入有误！");
-                    alertDialog.show();
+                    alert("输入有误！");
                     return;
                 }
                 if(opt.equals("/")) {
@@ -171,9 +164,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private double div(double num1, double num2){
         if(num2 == 0){
-            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-            alertDialog.setTitle("除数不能为0！");
-            alertDialog.show();
+            alert("除数不能为0！");
             return 0;
         }
         double result = num1/num2;
@@ -183,13 +174,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return result;
     }
 
+    private void alert(String s) {
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle(s);
+        alertDialog.show();
+    }
+
     /**
      * 回退
      */
     private void back(){
+        if(input.length()==0 && opt != null){
+            alert("运算符不能回退！");
+            return;
+        }
         if(input.length()>=1){
             input.deleteCharAt(input.length()-1);
             if(input.length() == 0){
+                opt=null;
+                if(lastOptButton !=null){
+                    lastOptButton.setBackgroundColor(getResources().getColor(R.color.backgroundColor));
+                    lastOptButton = null;
+                }
                 show(getResources().getString(R.string.defaultText));
                 findViewById(R.id.contentText).setBackgroundColor(Color.WHITE);
             }else{
@@ -205,8 +211,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         num1 = 0;
         num2 = 0;
         input = new StringBuilder();
+        opt = null;
+        findViewById(R.id.contentText).setBackgroundColor(Color.WHITE);
+        if(lastOptButton !=null){
+            lastOptButton.setBackgroundColor(getResources().getColor(R.color.backgroundColor));
+            lastOptButton = null;
+        }
         show(getResources().getString(R.string.defaultText));
     }
+
+    /**
+     * 结果显示
+     * @param text
+     */
     private void show(String text){
         TextView contentView = (TextView)findViewById(R.id.contentText);
         contentView.setText(text);

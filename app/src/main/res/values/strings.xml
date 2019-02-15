@@ -12,10 +12,10 @@
     <string name="bt11">1</string>
     <string name="bt12">2</string>
     <string name="bt13">3</string>
-    <string name="bt14">-</string>
+    <string name="bt14">=</string>
     <string name="bt15">.</string>
     <string name="bt16">0</string>
-    <string name="bt17">=</string>
+    <string name="bt17">-</string>
     <string name="bt18">+</string>
     <string name="defaultText">输入算式进行计算</string>
     <string name="app_name">Calculator</string>
